@@ -4,8 +4,12 @@ require 'open-uri'
 query = ARGV.join(" ")
 abort("Please pass your search term as an argument") if query.nil? || query == ""
 query = query.gsub(" ", "+")
+
 url = "https://www.youtube.com/results?search_query=#{query}"
-page = Nokogiri::HTML(open(url))   
+page_contents = open(url)
+abort("Unable to retrieve YouTube content") unless page_contents.status[0] == "200"
+
+page = Nokogiri::HTML(page_contents)
 first_page_links = []
 
 page.css('.yt-lockup-content').each_with_index do |section, index|
