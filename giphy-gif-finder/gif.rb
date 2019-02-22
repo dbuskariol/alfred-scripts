@@ -2,10 +2,16 @@ require 'net/http'
 require 'json'
 
 api_key = ENV["GIPHY_API_KEY"]
+abort("No API key provided") if api_key.nil? || api_key == ""
+
 query = ARGV.join(" ")
+abort("Please pass your search term as an argument") if query.nil? || query == ""
+
 query = query.gsub(" ", "+")
 url = "http://api.giphy.com/v1/gifs/search?q=#{query}&api_key=#{api_key}&limit=100"
 resp = Net::HTTP.get_response(URI.parse(url))
+abort("Error talking to the Giphy API") unless resp.code == "200"
+
 buffer = resp.body
 result = JSON.parse(buffer)
 
