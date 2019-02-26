@@ -1,7 +1,6 @@
-# create-boostnote-cli
-Create a note in [Boostnote](https://github.com/BoostIO/Boostnote) via the CLI
+### boostnote-create-not
 
-### Installation
+#### Installation
 
 To use this script, you need the `node` module `uuid`. Please ensure `node` is [installed on your system](https://nodejs.org/en/), then follow the steps below:
 
@@ -9,7 +8,7 @@ To use this script, you need the `node` module `uuid`. Please ensure `node` is [
 2. `cd create-boostnote-cli`
 3. `npm install uuid`
 
-### Setup
+#### Setup
 
 The script sets variables that are used to fill the node metadata. Please set the following variables located at the top of the `create_note.sh` script:
 
@@ -29,14 +28,6 @@ In this context:
 - `note_body` refers to the body you want the note to have
 - `note_storage_path` refers to the full path of the Boostnote storage folder. For example: `/Users/<username>/Library/Application Support/Boostnote/Storage"`
 
-### Usage
+#### Usage
 
-To use the script, run the following command:
-
-```
-sh create_note.sh
-```
-
-### Integrations
-
-This script can easily be adapted to take input for the `note_title` and `note_body` variables, as well as additional metadata such as `tags`. I've modified this script to be used in an [Alfred workflow](https://www.alfredapp.com/workflows/) that pulls ticket information from my ticketing system's API to create a matching note.
+In Alfred, run `bn <note_input>` where `<note_input>` is your configured note input such as title or body.
